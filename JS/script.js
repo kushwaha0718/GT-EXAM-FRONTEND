@@ -12,6 +12,7 @@ registerBtn.addEventListener("click", (e) => {
 });
 
 backBtn.addEventListener("click", (e) => {
+  e.preventDefault();
   signupForm.classList.remove("active");
   loginForm.classList.add("active");
 });
