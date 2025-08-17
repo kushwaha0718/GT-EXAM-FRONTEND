@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pariksha - GT EXAMS</title>
+    <link rel="icon" href="Images/hat.png">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+        <!-- AOS CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+    <!-- AOS JS (before your script.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    </head>
+<body>
+    
+
+    <div class="container" >
+        <div class="falling-icons" data-aos="fade-down" data-aos-delay="1300" data-aos-duration="1500">
+            <span>📘</span>
+            <span>✏️</span>
+            <span>📖</span>
+            <span>🎓</span>
+            <span>📝</span>
+            <span>📒</span>
+            <span>🖊️</span>
+            <span>📚</span>
+            <span>📔</span>
+            <span>📑</span>
+            <span>📎</span>
+        </div>
+        <nav data-aos="fade-down" data-aos-delay="100" data-aos-duration="1500">
+            <img src="Images/hat.png" alt="">
+            <span>Pariksha</span>
+        </nav>
+        <section class="hero">
+            <div class="left" data-aos="slide-right" data-aos-delay="2000" data-aos-duration="500">
+                <span>Pariksha - Gupta Tutorials</span>
+                <p>Hello students this is your mentor <strong>Ravikant Gupta sir</strong>.Prepare, practice, and perform better with our online exam portal designed exclusively for our tuition students. Here, you can attempt MCQ-based tests tailored to your syllabus, track your progress instantly, and strengthen your weak areas with regular practice.</p>
+                
+            </div>
+            <div class="right">
+                <div class="form-container" data-aos="slide-left" data-aos-delay="2000" data-aos-duration="500">
+                    <form class="login" id="login">
+                        <div class="form-header">
+                            <h1>Login</h1>
+                        </div>
+                        <p id="form-message">Please fill the required details</p>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" placeholder="xyz123@gmail.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" placeholder="********" required>
+                        </div>
+                        <div class="btn-confirm">
+                            <button>Login</button>
+                        </div>
+                        <div class="register">
+                            <span>Don't have an account?</span>
+                            <button id="noaccount" >Register</button>
+                        </div>
+                    </form>
+                    <form class="signup" id="signup">
+                        <div class="form-header">
+                            <h1>Register</h1>
+                        </div>
+                        <p id="form-message">Please fill the required details</p>
+                        <div class="email-signup">
+                            <label for="email">Email</label>
+                            <div>
+                                <input type="email" name="email" id="email-signup" placeholder="xyz123@gmail.com">
+                                <button id="get-otp" type="button">GET OTP</button>
+                            </div>
+                        </div>
+                        <div class="otp">
+                            <input type="text" id="otp-value" autocomplete="off">
+                            <button id="Submit-otp" type="button">Submit</button>
+                        </div>
+                        <div class="after-otp" id="after-otp">
+                            <div class="name">
+                                <div class="name-input">
+                                    <label for="firstname">First Name</label>
+                                    <input type="text" name="firstname" id="firstname" placeholder="First Name">
+                                </div>
+                                <div class="name-input">
+                                    <label for="lastname">Last Name</label>
+                                    <input type="text" name="lastname" id="lastname" placeholder="Last Name">
+                                </div>
+                            </div>
+                            <div class="pass-contact">
+                                <div class="pass-contact-input">
+                                    <label for="password2">Password</label>
+                                    <input type="password" name="password2" id="password2" placeholder="********">                                    
+                                </div>
+                                <div class="pass-contact-input">
+                                    <label for="contact">Contact</label>
+                                    <input type="text" name="contact" id="contact" placeholder="10-digit contact">                                    
+                                </div>
+                            </div>
+                            <div class="year">
+                                <label for="yearfield">Batch Year</label>
+                                <input type="text" name="yearfield" id="yearfield" placeholder="Your acedemic year">
+                            </div>
+                            <button id="final-signup">CONFIRM DETAILS</button>
+                        </div>
+                        <div class="back-to-login">
+                            <span>Already have an accoun?</span>
+                            <button id="back-to-login" >Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        AOS.init({
+            duration: 1000, // animation duration in ms
+            easing: 'ease-in-out', // animation easing
+            once: true // whether animation should happen only once
+        });
+    </script>
+
+    <script src="/JS/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,533 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    color: rgb(0, 0, 0);
+    background: #E0EAFC;
+    background: -webkit-linear-gradient(to right, #CFDEF3, #E0EAFC);
+    background: linear-gradient(to right, #CFDEF3, #E0EAFC);
+    font-family: "Lexend", sans-serif;
+}
+@keyframes spinBlob {
+    0% {
+        transform: rotate(0deg) scale(2);
+    }
+    100% {
+        transform: rotate(0.2turn) scale(2);
+    }
+    100% {
+        transform: rotate(0.4turn) scale(2);
+    }
+    100% {
+        transform: rotate(0.6turn) scale(2);
+    }
+    100% {
+        transform: rotate(0.8turn) scale(2);
+    }
+    100% {
+        transform: rotate(1turn) scale(2);
+    }
+}
+
+.container nav{
+    backdrop-filter: blur(2px);
+    background: #6a3093;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #a044ff, #6a3093);
+    background: linear-gradient(to right, #a044ff, #6a3093); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -2px -2px 10px black;
+    max-height: 10vh;
+    z-index: 2;
+}
+
+.container nav img{
+    padding: 20px 0px;
+    height: 50px;
+    transform: rotate(-30deg);
+    filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.478));
+    animation: RotateHat 2s ease-in-out infinite;
+}
+
+@keyframes RotateHat {
+    0%{
+      transform: rotate(-20deg);  
+    }
+    40%{
+      transform: rotate(-30deg);  
+    }
+    80%{
+      transform: rotate(-40deg);  
+    }
+    100%{
+      transform: rotate(-30deg);  
+    }
+}
+
+.falling-icons {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* don't block clicks */
+  overflow: hidden;
+  z-index: -1;
+}
+
+.falling-icons span {
+  position: absolute;
+  top: -50px;
+  font-size: 50px;
+  animation: fall linear infinite;
+  color: white;
+  opacity: 1;
+}
+
+/* Animation */
+@keyframes fall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Generate multiple icons at different positions */
+/* Different timings + positions */
+.falling-icons span:nth-child(1) { left: 9%; animation-duration: 6s; animation-delay: 0s; }
+.falling-icons span:nth-child(2) { left: 18%; animation-duration: 7s; animation-delay: 2s; }
+.falling-icons span:nth-child(3) { left: 27%; animation-duration: 5s; animation-delay: 1s; }
+.falling-icons span:nth-child(4) { left: 36%; animation-duration: 8s; animation-delay: 3s; }
+.falling-icons span:nth-child(5) { left: 45%; animation-duration: 6s; animation-delay: 4s; }
+.falling-icons span:nth-child(6) { left: 54%; animation-duration: 9s; animation-delay: 2s; }
+.falling-icons span:nth-child(7) { left: 63%; animation-duration: 7s; animation-delay: 1s; }
+.falling-icons span:nth-child(8) { left: 72%; animation-duration: 10s; animation-delay: 0s; }
+.falling-icons span:nth-child(9) { left: 81%; animation-duration: 6s; animation-delay: 2s; }
+.falling-icons span:nth-child(10) { left: 90%; animation-duration: 8s; animation-delay: 1s; }
+.falling-icons span:nth-child(11) { left: 100%; animation-duration: 9s; animation-delay: 3s; }
+.container nav span{
+    font-family: "Grand Hotel", cursive;
+    font-size: 3rem;
+    font-weight: 500;
+    color: white;
+}
+
+
+.hero{
+    display: flex;
+    height: 90vh;
+}
+
+.hero .left{
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 0px 0px 100px 150px;
+    
+}
+
+.hero .left span{
+    font-size: 5rem;
+    font-family: "Grand Hotel", cursive;
+    backdrop-filter: blur(5px);
+}
+
+.hero .left h1{
+    font-size: 4rem;
+    margin: 0px 30px;
+    backdrop-filter: blur(5px);
+}
+
+.hero .left p{
+    font-size: 1.5rem;
+    color: rgb(0, 0, 0);
+    margin: 100px 0px 0px 0px;
+    backdrop-filter: blur(5px);
+}
+
+.hero .right{
+    width: 50vw;
+    padding: 100px;
+}
+
+
+.form-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container form{
+    width: 50%;
+    min-height: 50vh;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #6a3093;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #a044ff, #6a3093);
+    background: linear-gradient(to right, #a044ff, #6a3093); 
+    border-radius: 20px;
+    box-shadow: -2px 2px 2px rgb(0, 0, 0);
+    border: 1px solid white;
+    backdrop-filter: blur(5px);
+    color: white;
+}
+
+
+
+.form-container form .form-header h1{
+    font-size: 3rem;
+    margin: 20px 0px;
+}
+
+.form-container form .form-group{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+    width: 100%;
+}
+
+.form-container form .form-group label{
+    font-size: 1.2rem;
+    margin: 5px 0px;
+}
+
+.form-container form .form-group input{
+    font-size: 1.3rem;
+    padding: 8px 5px;
+    color: white;
+    background-color: transparent;
+    border: 0px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.605);
+    width: 100%;
+    outline: none;
+    background: transparent;
+    letter-spacing: 1.5px;
+}
+
+input::placeholder{
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.257);
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+    -webkit-text-fill-color: #fff !important;  /* keep text visible */
+    background-color: transparent !important;
+    transition: background-color 5000s ease-in-out 0s; /* trick to avoid yellow */
+}
+
+.form-container form .btn-confirm{
+    width: 100%;
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-container form .btn-confirm button{
+    width: 80%;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    padding: 10px 0px;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    font-weight: 600;
+    text-shadow: -2px 2px 2px rgba(0, 0, 0, 0.339);
+    border-radius: 10px;
+    transition: 0.1s ease-in-out;
+}
+
+.form-container form .btn-confirm button:hover{
+    background-color: white;
+    color: black;
+}
+
+.form-container form .register span{
+    font-size: 1.2rem;
+}
+
+.form-container form .register button{
+    font-size: 1rem;
+    padding: 5px;
+    margin: 0px 5px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.form-container form .register button:hover{
+    background-color: white;
+    color: black;
+}
+
+.form-container .signup .email-signup{
+    width: 100%;
+    font-size: 1.3rem;
+    margin: 10px;
+}
+
+.form-container .signup .email-signup div{
+    display: flex;
+}
+
+.form-container .signup .email-signup div input{
+    font-size: 1.3rem;
+    padding: 5px 2px;
+    color: white;
+    background-color: transparent;
+    border: 0px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.605);
+    width: 75%;
+    outline: none;
+    background: transparent;
+    letter-spacing: 1.5px;
+}
+.form-container .signup .email-signup div button{
+    width: 25%;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: white;
+    background-color: transparent;
+    border: 1.2px solid white;
+    padding: 5px;
+    border-radius: 10px 10px 10px 0px;
+}
+
+.form-container .signup .email-signup div button:hover{
+    background-color: white;
+    color: black;
+}
+
+.form-container .signup .otp{
+    display: flex;
+    width: 100%;
+    margin: 10px;
+}
+
+.form-container .signup .otp input{
+    font-size: 1.3rem;
+    padding: 5px 2px;
+    color: white;
+    background-color: transparent;
+    border: 0px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.605);
+    width: 75%;
+    outline: none;
+    background: transparent;
+    letter-spacing: 1.5px;
+}
+
+.form-container .signup .otp button{
+    width: 25%;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: white;
+    background-color: transparent;
+    border: 1.2px solid white;
+    padding: 5px;
+    border-radius: 10px 10px 10px 0px;
+}
+.form-container .signup .otp button:hover{
+    background-color: white;
+    color: black;
+}
+
+.form-container .signup .after-otp{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+}
+
+.form-container .signup .after-otp .name{
+    display: flex;
+}
+
+.form-container .signup .after-otp .name .name-input label{
+    font-size: 1.2rem;
+}
+
+.form-container .signup .after-otp .name .name-input input{
+    font-size: 1.3rem;
+    padding: 5px 2px;
+    color: white;
+    background-color: transparent;
+    border: 0px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.605);
+    width: 90%;
+    outline: none;
+    background: transparent;
+    letter-spacing: 1.5px;
+}
+
+.form-container .signup .after-otp .pass-contact{
+    display: flex;
+    width: 100%;
+    margin: 15px 0px;
+}
+
+.form-container .signup .after-otp .pass-contact input{
+    font-size: 1.3rem;
+    padding: 5px 2px;
+    color: white;
+    background-color: transparent;
+    border: 0px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.605);
+    width: 90%;
+    outline: none;
+    background: transparent;
+    letter-spacing: 1.5px;
+}
+
+.form-container .signup .after-otp .year{
+    display: flex;
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.form-container .signup .after-otp .year input{
+    margin: 0px 10px;
+    font-size: 1.3rem;
+    padding: 5px 2px;
+    color: white;
+    background-color: transparent;
+    border: 0px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.605);
+    width: 70%;
+    outline: none;
+    background: transparent;
+    letter-spacing: 1.5px;
+}
+label{
+    font-size: 1.2rem;
+}
+
+.form-container .signup .after-otp button{
+    width: 100%;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    padding: 10px 0px;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    font-weight: 600;
+    text-shadow: -2px 2px 2px rgba(0, 0, 0, 0.339);
+    border-radius: 10px;
+    transition: 0.1s ease-in-out;
+    margin: 30px 0px 20px 0px;
+}
+
+.form-container .signup .back-to-login{
+    display: flex;
+    width: 100%;
+    position: fixed;
+    bottom: 10px;
+}
+
+.form-container .signup .back-to-login span{
+    font-size: 1.2rem;
+    width: 70%;
+    padding: 10px 20px;
+}
+
+.form-container .signup .back-to-login button{
+    font-size: 1rem;
+    padding: 5px;
+    margin: 0px 20px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 30% ;
+    font-weight: 600;
+}
+.form-container .signup .back-to-login button:hover{
+    background-color: white;
+    color: black;
+}
+
+.form-container .signup .after-otp button:hover{
+    background-color: white;
+    color: black;
+}
+/* Form switch animation */
+.form-container {
+  position: relative;
+  width: 100%;
+}
+.form-container form {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px) scale(0.95);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.6s ease, border 0.4s ease, box-shadow 0.4s ease;
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.form-container form.active {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+  pointer-events: auto;
+  border: 0px solid transparent; /* blue highlight */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* glowing effect */
+}
+
+
+@media (max-width: 500px) {
+  .hero {
+    flex-direction: column;   /* stack vertically */
+    height: auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .hero .left, .hero .right {
+    width: 100%;   /* take full width */
+    padding: 20px 0px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero .left span {
+    font-size: 2.5rem;   /* smaller */
+  }
+
+  .hero .left h1 {
+    font-size: 2rem;
+    margin: 10px 0;
+  }
+
+  .hero .left p {
+    font-size: 1rem;
+    margin: 20px 0 0 0;
+  } 
+}
+
+#form-message{
+    font-size: 1.3rem;
+    border: 2px solid white;
+    padding: 2px 5px;
+    border-radius: 10px;
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -2px 2px 2px black;
+    margin: 5px;
+}
