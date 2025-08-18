@@ -439,13 +439,13 @@ label{
 
 .form-container .signup .back-to-login span{
     font-size: 1.2rem;
-    width: 70%;
+    width: 80%;
     padding: 10px 20px;
 }
 
 .form-container .signup .back-to-login button{
     font-size: 1rem;
-    padding: 5px;
+    /* padding: 5px; */
     margin: 0px 20px;
     background-color: transparent;
     color: white;
@@ -489,37 +489,7 @@ label{
 }
 
 
-@media (max-width: 500px) {
-  .hero {
-    flex-direction: column;   /* stack vertically */
-    height: auto;
-    padding: 20px;
-    text-align: center;
-  }
-
-  .hero .left, .hero .right {
-    width: 100%;   /* take full width */
-    padding: 20px 0px;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hero .left span {
-    font-size: 2.5rem;   /* smaller */
-  }
-
-  .hero .left h1 {
-    font-size: 2rem;
-    margin: 10px 0;
-  }
-
-  .hero .left p {
-    font-size: 1rem;
-    margin: 20px 0 0 0;
-  } 
-}
-
-#form-message{
+.form-message{
     font-size: 1.3rem;
     border: 2px solid white;
     padding: 2px 5px;
@@ -530,4 +500,144 @@ label{
     justify-content: center;
     box-shadow: -2px 2px 2px black;
     margin: 5px;
+}
+
+button.loading {
+  position: relative;
+  pointer-events: none;
+}
+
+button.loading::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #fff;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  transform: translateY(-50%);
+  margin: 0px -5px;
+}
+
+@keyframes spin {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+
+@media (max-width: 500px) {
+    .hero {
+        flex-direction: column;   /* stack vertically */
+        height: auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .hero .left, .hero .right {
+        width: 100%;   /* take full width */
+        padding: 20px 0px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero .left span {
+        font-size: 2.5rem;   /* smaller */
+    }
+
+    .hero .left h1 {
+        font-size: 2rem;
+        margin: 10px 0;
+    }
+
+    .hero .left p {
+        font-size: 1rem;
+        margin: 20px 0 0 0;
+    } 
+
+    .form-container form{
+        width: 80%;
+    }
+    .form-container form .form-group{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        margin: 10px 0px;
+        width: 100%;
+    }
+    .form-container .signup .email-signup{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+    .form-message{
+        font-size: 1rem;
+    }
+    .form-container .signup .after-otp button{
+    font-size: 1.2rem;
+    padding: 8px 0px;
+    margin: 50px 0px;
+    }
+    .form-container .signup .back-to-login button{
+        font-size: 1rem;
+        /* padding: 5px; */
+        margin: 0px 20px;
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+        border-radius: 10px;
+        width: 30% ;
+        max-height: 5vh;
+        font-weight: 600;
+    }
+    .form-container .signup .back-to-login span{
+        font-size: 1.2rem;
+        width: 80%;
+        padding: 10px 0px 10px 10px;
+    }
+
+    .form-container .signup .after-otp .name{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-container .signup .after-otp .name .name-input{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        margin: 10px 0px;
+    }
+
+    .form-container .signup .after-otp .name .name-input input{
+        width: 100%;
+    }
+
+    .form-container .signup .after-otp .pass-contact{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 15px 0px;
+    }
+
+    .form-container .signup .after-otp .pass-contact input{
+        font-size: 1.3rem;
+        padding: 5px 2px;
+        color: white;
+        background-color: transparent;
+        border: 0px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.605);
+        width: 100%;
+        outline: none;
+        background: transparent;
+        letter-spacing: 1.5px;
+    }
+    .form-container .signup .after-otp .pass-contact .pass-contact-input{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        margin: 10px 0px;
+    }
 }

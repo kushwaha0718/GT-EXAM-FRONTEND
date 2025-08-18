@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
         <!-- AOS CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!-- AOS JS (before your script.js) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     </head>
@@ -51,7 +51,7 @@
                         <div class="form-header">
                             <h1>Login</h1>
                         </div>
-                        <p id="form-message">Please fill the required details</p>
+                        <p class="form-message" id="form-message1">Please fill the required details</p>
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" name="email" id="email" placeholder="xyz123@gmail.com" required>
@@ -72,7 +72,7 @@
                         <div class="form-header">
                             <h1>Register</h1>
                         </div>
-                        <p id="form-message">Please fill the required details</p>
+                        <p class="form-message" id="form-message2">Please fill the required details</p>
                         <div class="email-signup">
                             <label for="email">Email</label>
                             <div>
@@ -80,7 +80,7 @@
                                 <button id="get-otp" type="button">GET OTP</button>
                             </div>
                         </div>
-                        <div class="otp">
+                        <div class="otp" id="otp">
                             <input type="text" id="otp-value" autocomplete="off">
                             <button id="Submit-otp" type="button">Submit</button>
                         </div>
