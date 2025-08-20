@@ -53,15 +53,15 @@
                         </div>
                         <p class="form-message" id="form-message1">Please fill the required details</p>
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" id="email" placeholder="xyz123@gmail.com" required>
+                            <label for="email-login">Email</label>
+                            <input type="email" name="email" id="email-login" placeholder="xyz123@gmail.com" required autocomplete="email">
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" name="password" id="password" placeholder="********" required>
+                            <label for="password-login">Password</label>
+                            <input type="password" name="password" id="password-login" placeholder="********" required autocomplete="current-password">
                         </div>
-                        <div class="btn-confirm">
-                            <button>Login</button>
+                        <div class="btn-confirm" >
+                            <button id="login-confirm" type="button">Login</button>
                         </div>
                         <div class="register">
                             <span>Don't have an account?</span>
@@ -74,9 +74,9 @@
                         </div>
                         <p class="form-message" id="form-message2">Please fill the required details</p>
                         <div class="email-signup">
-                            <label for="email">Email</label>
+                            <label for="email-signup">Email</label>
                             <div>
-                                <input type="email" name="email" id="email-signup" placeholder="xyz123@gmail.com">
+                                <input type="email" name="email" id="email-signup" placeholder="xyz123@gmail.com" required autocomplete="email">
                                 <button id="get-otp" type="button">GET OTP</button>
                             </div>
                         </div>

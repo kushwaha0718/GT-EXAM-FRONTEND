@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/dashboard.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+        <!-- AOS CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- AOS JS (before your script.js) -->
+</head>
+<body>
+    <div class="container" >
+        <div class="falling-icons" data-aos="fade-down" data-aos-delay="1300" data-aos-duration="1500">
+            <span>📘</span>
+            <span>✏️</span>
+            <span>📖</span>
+            <span>🎓</span>
+            <span>📝</span>
+            <span>📒</span>
+            <span>🖊️</span>
+            <span>📚</span>
+            <span>📔</span>
+            <span>📑</span>
+            <span>📎</span>
+        </div>
+        <div class="dash-nav" data-aos="fade-down" data-aos-delay="100" data-aos-duration="1500">
+            <div class="inner-nav">
+                <div class="left">
+                <img src="Images/hat.png" alt="">
+                <span>Pariksha</span>
+            </div>
+            <div class="right">
+                <ul id="nav-links">
+                    
+                </ul>
+            </div>
+            </div>
+        </div>
+        <section>
+            <div class="test-data-container">
+                <div class="test-data" id="test-data" >
+        
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000, // animation duration in ms
+            easing: 'ease-in-out', // animation easing
+            once: true // whether animation should happen only once
+        });
+    </script>
+    <script src="JS/dashboard.js"></script>
+</body>
+</html>

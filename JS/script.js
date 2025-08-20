@@ -35,10 +35,22 @@ function showMessage(message, color) {
   formmessage2.textContent = message;
   formmessage2.style.background = color;
 
-  // Reset after 3 seconds
+  
   setTimeout(() => {
     formmessage2.textContent = "Please fill the required details";
     formmessage2.style.background = "transparent";
+  }, 3000);
+}
+
+let formmessage = document.getElementById("form-message1");
+function showMessage2(message, color) {
+  formmessage.textContent = message;
+  formmessage.style.background = color;
+
+  
+  setTimeout(() => {
+    formmessage.textContent = "Please fill the required details";
+    formmessage.style.background = "transparent";
   }, 3000);
 }
 
@@ -177,5 +189,65 @@ finalSignupBtn.addEventListener("click", (e) => {
     })
     .catch(err => {
       showMessage("error " + err , "red");
+    })
+});
+
+
+
+const loginEmail = document.getElementById("email-login");
+const loginPass = document.getElementById("password-login");
+const confirmLoginBtn = document.getElementById("login-confirm");
+
+
+
+confirmLoginBtn.addEventListener("click", async () => {
+  let email = loginEmail.value.trim();
+  let password = loginPass.value.trim();
+
+  if (email === "" || password === "") {
+    showMessage("Please fill all fields", "red");
+    return;
+  }
+
+  try {
+    confirmLoginBtn.classList.add("loading");
+    confirmLoginBtn.textContent = "Verifying.. ";
+    confirmLoginBtn.disabled= true;
+    const res = await fetch("http://localhost:8080/gtexam/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: email,
+        password: password
+      })
     });
+
+    if (res.ok) {
+      const token = await res.text();
+      showMessage2("Login successful!", "green");
+
+      confirmLoginBtn.classList.remove("loading");
+      confirmLoginBtn.textContent = "Login";
+      confirmLoginBtn.disabled= false;
+      localStorage.setItem("authToken", token);
+      setTimeout(()=>{
+        window.location.reload();
+      },2000);
+
+      setTimeout(() => {
+        window.location.replace("/dashboard.html");
+      }, 2000);
+    } else {
+      const errMsg = await res.text();
+      showMessage2("Login failed: " + errMsg, "red");
+      confirmLoginBtn.classList.remove("loading");
+      confirmLoginBtn.disabled=false
+      confirmLoginBtn.textContent = "Login";
+    }
+  } catch (error) {
+    showMessage2("Error: " + error.message, "red");
+    confirmLoginBtn.classList.remove("loading");
+    confirmLoginBtn.disabled=false
+    confirmLoginBtn.textContent = "Login";
+  }
 });
