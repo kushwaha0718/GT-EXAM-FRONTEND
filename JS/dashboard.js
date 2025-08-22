@@ -15,104 +15,144 @@ function parseJwt(token) {
 if (token) {
   let decoded = parseJwt(token);
   userRole = decoded.role;
-  console.log("User Role:", userRole);
 }
 
 let navLinks = document.getElementById("nav-links");
 
 if (userRole === "USER") {
   navLinks.innerHTML = `
-    <li><a href="#"><i class="fa-solid fa-clipboard" style="color: #ffffff;"></i> Tests</a></li>
-    <li><a href="#"><i class="fa-solid fa-square-poll-vertical" style="color: #ffffff;"></i> Results</a></li>
-    <li><a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i> Logout</a></li>
-    <li><a href="#"><i class="fa-solid fa-user" style="color: #ffffff;" ></i></a></li>
+    <li><button><i class="fa-solid fa-clipboard" style="color: #ffffff;"></i> Tests</button></li>
+    <li><button><i class="fa-solid fa-square-poll-vertical" style="color: #ffffff;"></i> Results</button></li>
+    <li><button><i class="fa-solid fa-file-pen" style="color: #ffffff;"></i> Notes</button></li>
+    <li><button onclick="logout()"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i> Logout</button></li>
+    <li><button><i class="fa-solid fa-user" style="color: #ffffff;" ></i></button></li>
   `;
-
-  function logout() {
-    localStorage.removeItem("authToken");
-    window.location.replace("/index.html");
-  }
-
-
 } else if (userRole === "ADMIN") {
   navLinks.innerHTML = `
-    <li><a href="#"><i class="fa-solid fa-clipboard" style="color: #ffffff;"></i> Tests</a></li>
-    <li><a href="#"><i class="fa-regular fa-square-plus"></i> Create Test</a></li>
-    <li><a href="#"><i class="fa-solid fa-square-poll-vertical" style="color: #ffffff;"></i> Results</a></li>
-    <li><a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i> Logout</a></li>
-    <li><a href="#"><i class="fa-solid fa-user" style="color: #ffffff;" ></i></a></li>
+    <li><button><i class="fa-solid fa-clipboard" style="color: #ffffff;"></i> Tests</button></li>
+    <li><button onclick="createTest()"><i class="fa-regular fa-square-plus"></i> Create Test</button></li>
+    <li><button><i class="fa-solid fa-square-poll-vertical" style="color: #ffffff;"></i> Results</button></li>
+    <li><button><i class="fa-solid fa-database" style="color: #ffffff;"></i> Students</button></li>
+    <li><button><i class="fa-solid fa-file-pen" style="color: #ffffff;"></i> Notes</button></li>
+    <li><button onclick="logout()"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i> Logout</button></li>
+    <li><button><i class="fa-solid fa-user" style="color: #ffffff;" ></i></button></li>
   `;
 }
 
-const testDashboard = document.getElementById("test-data");
-
-async function loadTests() {
-  try {
-    const token = localStorage.getItem("authToken");
-    const res = await fetch("http://localhost:8080/test/get-all", {
-      method: "GET",
-      headers: {
-        "Authorization": "Bearer " + token,
-        "Content-Type": "application/json"
-      }
-    });
-
-    if (res.status === 204) {
-      testDashboard.innerHTML = "<p>No tests found</p>";
-      return;
-    }  
-
-    if (res.ok) {
-      const tests = await res.json();
-      testDashboard.innerHTML = "";
-
-      tests.forEach((test,i) => {
-        const testCard = document.createElement("div");
-        testCard.classList.add("test-card");
-        testCard.setAttribute("data-aos", "flip-down");
-        testCard.setAttribute("data-aos-delay",1000);
-        testCard.setAttribute("data-aos-duration", "500");
-
-        testCard.textContent = `Card ${i + 1}`;
-
-        testCard.innerHTML = `
-          <div class="test-header">
-            <div class="test-header-left">
-              <h1><b>Topic : </b>${test.title}</h1>
-              <span><b>Upload Date:</b> ${test.creationDate}</span>
-            </div>
-            <div class="test-header-right">
-              <p><b>Duration:</b> ${test.duration} mins</p>
-            </div>
-          </div>
-          <p><b>Total Marks:</b> ${test.totalMarks}</p>
-          <p><b>Start Date:</b> ${test.startDate}</p>
-          <p><b>Start Time:</b> ${test.startTime}</p>
-        `;
-
-        testDashboard.appendChild(testCard);
-      });
-    } else {
-      navLinks.style.display = "none"
-      const err = await res.text();
-      testDashboard.innerHTML = `
-        <div class = "login-card-dash">
-          <div class = "card" data-aos="fade-top" data-aos-delay="2000" data-aos-duration="500">
-            <h1>Session has expired !</h1>
-            <p>Please login again !</p>
-            <button id="dash-to-login">Login</button>
-          </div>
-        </div>
-      `;
-
-      document.getElementById("dash-to-login").addEventListener("click", (e) => {
-        e.preventDefault();
-        window.location.replace("/index.html");
-      });
-    }
-  } catch (err) {
-    testDashboard.innerHTML = `<p style="color:red;">Something went wrong: ${err}</p>`;
-  }
+function logout() {
+  localStorage.removeItem("authToken");
+  window.location.replace("/index.html");
 }
 
-loadTests();
+let mainPage = document.getElementById("test-data");
+
+function showMessage(message, color) {
+    console.log("hi");
+    
+    addTestMsgBox.style.dispaly = "block";
+    addTestMsg.textContent = message;
+    addTestMsg.style.background = color;
+
+  
+    setTimeout(() => {
+      addTestMsgBox.style.dispaly = "none";
+      addTestMsg.textContent = "";
+      addTestMsg.style.background = "transparent";
+    }, 3000);
+  }
+
+
+function createTest() {
+  mainPage.innerHTML = `
+    <div class="add-test-msg-box" id="add-test-msg-box">
+      <p id="add-test-msg" class="add-test-msg"></p>
+    </div>
+    <div class="add-test-card" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="300">
+      <form id="add-test-form">
+          <!-- Title -->
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" required>
+
+          <div class="date-time">
+              <div>
+                  <!-- Start Date -->
+                  <label for="startDate">Start Date:</label>
+                  <input type="date" id="startDate" name="startDate" required>
+              </div>
+
+              <div>
+                  <!-- Start Time -->
+                  <label for="startTime">Start Time:</label>
+                  <input type="time" id="startTime" name="startTime" required>
+              </div>
+          </div>
+
+          <div class="dur-marks">
+              <div>
+                  <!-- Duration -->
+                  <label for="duration">Duration (minutes):</label>
+                  <input type="number" id="duration" name="duration" min="1" required>
+              </div>
+
+              <!-- Total Marks -->
+              <div>
+                  <label for="totalMarks">Total Marks:</label>
+                  <input type="number" id="totalMarks" name="totalMarks" min="0" required>
+              </div>
+          </div>
+
+          <div class="add-test-btn">
+              <button type="button" id="add-test">ADD TEST</button>
+          </div>
+      </form>
+    </div>
+  `;
+
+  const addTestBtn = document.getElementById("add-test");
+  const form = document.getElementById("add-test-form");
+  const addTestMsg = document.getElementById("add-test-msg");
+  const addTestMsgBox = document.getElementById("add-test-msg-box");
+
+  addTestMsg.style.display = "none";
+
+  addTestBtn.addEventListener("click", async () => {
+    const testRequestDto = {
+      title: form.title.value.trim(),
+      startDate: form.startDate.value,
+      startTime: form.startTime.value,
+      duration: parseInt(form.duration.value),
+      totalMarks: parseInt(form.totalMarks.value)
+    };
+    try {
+      const response = await fetch("http://localhost:8080/test/modify/add-test", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+         },
+        body: JSON.stringify(testRequestDto)
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        addTestMsg.style.display = "flex";        
+        addTestMsg.textContent = "✅ Test added successfully! Test ID: " + data.id;
+        addTestMsg.style.backgroundColor = "green";
+        form.reset(); 
+      } else {
+        addTestMsg.style.display = "flex";  
+        addTestMsg.textContent = "❌ Failed to add test. Status: " + response.status;
+        addTestMsg.style.backgroundColor = "red";
+      }
+    } catch (error) {
+      addTestMsg.style.display = "flex";  
+      addTestMsg.textContent = "⚠️ Error: " + error.message;
+      addTestMsg.style.backgroundColor = "red";
+    }
+
+    setTimeout(() => {
+      addTestMsg.style.display = "none";  
+      addTestMsg.textContent = "";
+    }, 5000);
+  });
+}
